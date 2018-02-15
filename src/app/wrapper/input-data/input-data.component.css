@@ -1,0 +1,48 @@
+.input-data {
+  margin: 20px 10%;
+  height: 60px;
+  width: 80%;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: #808080b0 0 9px 20px 6px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.chooseAMonthForm {
+  margin: auto;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid gray;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 15px;
+  padding: 5px;
+  font-size: 17px;
+  width: 150px;
+}
+
+button {
+  border: none;
+  border-radius: 20px;
+  margin: 0 15px;
+  padding: 5px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  background: rgb(63, 186, 206);
+  color: white;
+}
+
+
+
+input:focus {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
+button:hover {
+  box-shadow: #80808052 0 4px 14px 1px;
+}

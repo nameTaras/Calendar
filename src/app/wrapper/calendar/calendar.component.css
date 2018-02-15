@@ -1,0 +1,30 @@
+.calendar {
+  margin: 20px 10%;
+  height: 540px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: #808080b0 0 9px 20px 6px,
+              #80808040 0 15px 20px 1px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.year {
+  margin: auto;
+  font-size: 25px;
+}
+
+table {
+  margin: auto;
+}
+td {
+  margin: 0;
+  border: 1px solid black;
+  height: 70px;
+  width: 140px;
+  text-align: center;
+}
+th {
+  padding: 10px;
+}
