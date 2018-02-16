@@ -4,14 +4,14 @@ import {Subject} from "rxjs/Subject";
 @Injectable()
 export class CommunicationService {
 
-  subject1 = new Subject<any>();
+  subject = new Subject<any>();
 
   constructor() {
 
   }
 
-  toggle(bool: any) {
-    this.subject1.next(bool);
+  toggle(bool: boolean) {
+    this.subject.next(bool);
   }
 
 }

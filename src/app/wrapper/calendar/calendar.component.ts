@@ -8,12 +8,13 @@ import {CommunicationService} from "../../services/communication.service";
 })
 export class CalendarComponent implements OnInit {
 
-  toggleCalendar: boolean = false;
+  toggleCalendarTransfer: boolean;
 
-  constructor(private communicationService = CommunicationService) {
-    this.communicationService.toggle(this.toggleCalendar);
+  constructor(private communicationService: CommunicationService) {
+    this.communicationService.subject.subscribe( (bool) => {
+      this.toggleCalendarTransfer = bool;
+      });
   }
-
 
   ngOnInit() {
   }

@@ -8,17 +8,14 @@ import {CommunicationService} from "../../services/communication.service";
 })
 export class InputDataComponent implements OnInit {
 
-  public toggleCalendarTransfer: any;
+  public toggleCalendar: boolean = true;
 
-  constructor(private communicationService = CommunicationService) {
-    this.communicationService.subject1.subscribe( (value) => {
-      this.toggleCalendarTransfer = value;
-    });
-    console.log(this.toggleCalendarTransfer);
+  constructor(private communicationService: CommunicationService) {
+
   }
 
   createCalendar(id, year, month): void {
-
+    this.communicationService.toggle(this.toggleCalendar);
   }
 
   ngOnInit() {
