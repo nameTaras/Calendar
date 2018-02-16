@@ -9,12 +9,10 @@
   flex-direction: column;
   position: relative;
 }
-
 .year {
   margin: auto;
   font-size: 25px;
 }
-
 table {
   margin: auto;
 }
@@ -27,10 +25,26 @@ td {
 th {
   padding: 10px;
 }
+.backdrop{
+  background-color:rgba(0,0,0,0.6);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+}
+.modal-body {
+  height: 100px;
+  display: flex;
+}
+.dayAndMonth {
+  font-size: 30px;
+  margin: auto;
+}
 
                                             /*PSEUDO-CLASSES*/
-td:hover {
-  box-shadow: rgba(0,0,0,0.2) 0px 3px 20px 2px;
-  transform: scale(1.2);
-  transition-duration: 0.5s;
-}
+/*td:hover {*/
+  /*box-shadow: rgba(0,0,0,0.2) 0px 3px 20px 2px;*/
+  /*transform: scale(1.2);*/
+  /*transition-duration: 0.5s;*/
+/*}*/

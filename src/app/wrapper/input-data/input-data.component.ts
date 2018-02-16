@@ -11,11 +11,11 @@ export class InputDataComponent implements OnInit {
   public toggleCalendar: boolean = true;
 
   constructor(private communicationService: CommunicationService) {
-
   }
 
   createCalendar(id, year, month): void {
     this.communicationService.toggle(this.toggleCalendar);
+    this.communicationService.create(id, year, month);
   }
 
   ngOnInit() {

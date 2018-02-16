@@ -5,6 +5,7 @@ import {Subject} from "rxjs/Subject";
 export class CommunicationService {
 
   subject = new Subject<any>();
+  subject2 = new Subject<any>();
 
   constructor() {
 
@@ -12,6 +13,10 @@ export class CommunicationService {
 
   toggle(bool: boolean) {
     this.subject.next(bool);
+  }
+
+  create(id, year, month){
+    this.subject2.next(id + " " + year + " " + month);
   }
 
 }

@@ -16,9 +16,7 @@ import {CommunicationService} from "./services/communication.service";
     InputDataComponent,
     CalendarComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule],
   providers: [CommunicationService],
   bootstrap: [AppComponent]
 })
