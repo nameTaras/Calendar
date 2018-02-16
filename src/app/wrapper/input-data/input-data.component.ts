@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CommunicationService} from "../../services/communication.service";
 
 @Component({
   selector: 'app-input-data',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputDataComponent implements OnInit {
 
+  public toggleCalendarTransfer: any;
 
-
-  constructor() { }
+  constructor(private communicationService = CommunicationService) {
+    this.communicationService.subject1.subscribe( (value) => {
+      this.toggleCalendarTransfer = value;
+    });
+    console.log(this.toggleCalendarTransfer);
+  }
 
   createCalendar(id, year, month): void {
 

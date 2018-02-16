@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { WrapperComponent } from './wrapper/wrapper.component';
 import { InputDataComponent } from './wrapper/input-data/input-data.component';
 import { CalendarComponent } from './wrapper/calendar/calendar.component';
+import {CommunicationService} from "./services/communication.service";
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { CalendarComponent } from './wrapper/calendar/calendar.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [CommunicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
