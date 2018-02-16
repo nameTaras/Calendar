@@ -20,11 +20,17 @@ table {
 }
 td {
   margin: 0;
-  border: 1px solid black;
   height: 70px;
   width: 140px;
   text-align: center;
 }
 th {
   padding: 10px;
+}
+
+                                            /*PSEUDO-CLASSES*/
+td:hover {
+  box-shadow: rgba(0,0,0,0.2) 0px 3px 20px 2px;
+  transform: scale(1.2);
+  transition-duration: 0.5s;
 }

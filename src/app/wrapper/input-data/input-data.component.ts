@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputDataComponent implements OnInit {
 
+
+
   constructor() { }
+
+  createCalendar(id, year, month): void {
+
+  }
 
   ngOnInit() {
   }
