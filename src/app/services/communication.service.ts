@@ -16,7 +16,11 @@ export class CommunicationService {
   }
 
   create(id, year, month){
-    this.subject2.next(id + " " + year + " " + month);
+    this.subject2.next({
+      id: id,
+      year: year,
+      month: month
+    });
   }
 
 }

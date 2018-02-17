@@ -5,26 +5,49 @@
   border-radius: 15px;
   box-shadow: #808080b0 0 9px 20px 6px,
               #80808040 0 15px 20px 1px;
+}
+
+.daysOfWeek {
   display: flex;
   flex-direction: column;
-  position: relative;
 }
 .year {
-  margin: auto;
-  font-size: 25px;
+  text-align: center;
+  font-size: 30px;
+  height: 37px;
 }
 table {
-  margin: auto;
-}
-td {
   margin: 0;
-  height: 70px;
-  width: 140px;
-  text-align: center;
+  width: 100%;
 }
 th {
-  padding: 10px;
+  text-align: center;
+  width: 140px;
+  font-size: 20px;
 }
+
+
+.id {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.blocksOfDays {
+  margin: 7px 0 0 14px;
+  height: 70px;
+  width: 140px;
+  display: flex;
+}
+.day {
+  margin: auto;
+}
+.hoverClass:hover {
+   box-shadow: rgba(0,0,0,0.2) 0 3px 20px 2px;
+   transform: scale(1.2);
+   transition-duration: 0.5s;
+ }
+
+                                          /*Modal window*/
 .backdrop{
   background-color:rgba(0,0,0,0.6);
   position:fixed;
@@ -41,10 +64,6 @@ th {
   font-size: 30px;
   margin: auto;
 }
-
-                                            /*PSEUDO-CLASSES*/
-/*td:hover {*/
-  /*box-shadow: rgba(0,0,0,0.2) 0px 3px 20px 2px;*/
-  /*transform: scale(1.2);*/
-  /*transition-duration: 0.5s;*/
-/*}*/
+.close:focus {
+  outline: none;
+}

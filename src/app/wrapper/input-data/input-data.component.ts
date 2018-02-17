@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CommunicationService} from "../../services/communication.service";
+import { CommunicationService } from "../../services/communication.service";
 
 @Component({
   selector: 'app-input-data',
@@ -10,15 +10,13 @@ export class InputDataComponent implements OnInit {
 
   public toggleCalendar: boolean = true;
 
-  constructor(private communicationService: CommunicationService) {
-  }
+  constructor(private communicationService: CommunicationService) {}
 
   createCalendar(id, year, month): void {
     this.communicationService.toggle(this.toggleCalendar);
     this.communicationService.create(id, year, month);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

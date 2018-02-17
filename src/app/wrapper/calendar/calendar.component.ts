@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {CommunicationService} from "../../services/communication.service";
-import * as $ from 'jquery/dist/jquery.min.js';
 import moment = require("moment");
 
 @Component({
@@ -10,49 +9,57 @@ import moment = require("moment");
 })
 export class CalendarComponent implements OnInit {
 
-  public toggleCalendarTransferred: boolean = false;
+  public days: Array<number> = [];
+  public toggleCalendar = false;
   public inputYear: string;
+  public inputId: any;
   public display: string = 'none';
   public monthModal: string;
   public dayModal: number;
+  public daysInMonth: number;
+  public firstDayOfMonth: number;
+  public numberDay = 0;
+  public defineHoverClass: any;
 
-  constructor(private communicationService: CommunicationService) {
+  constructor(private communicationService: CommunicationService)  {
     this.communicationService.subject2.subscribe((value) => {
-      let divide = value.split(" ");
-      this.createCalendarTransferred(divide[0], divide[1], divide[2]);
+      this.createCalendar(value.id, value.year, value.month);
     });
     this.communicationService.subject.subscribe( (bool) => {
-      this.toggleCalendarTransferred = bool;
+      this.toggleCalendar = bool;
     });
+    for (let i = 0; i <= 41; i++) {
+      this.days.push(i);
+    }
   }
 
-
-  createCalendarTransferred(id, year, month): void {
-    this.inputYear = year;
+  createCalendar(id, year, month): void {
     const monthToString: string = year.toString() + month.toString();
+
     this.monthModal = moment(monthToString, "YYYYMM").format('MMMM');
-    let numberDay: any = 1;
-    const daysInMonth =  32 - new Date(year, month - 1, 32).getDate();
-    const firstDayOfMonth = new Date(year, month - 1, 0).getDay();
-    for (let toClean = 0; toClean <= 41; toClean++) {
-      $("#" + toClean).html("");
-    }
-    for (let i = firstDayOfMonth; i < daysInMonth + firstDayOfMonth; i++) {
-      $("#" + i).html(numberDay).mouseenter(function() {
-        $(this).css({"box-shadow": "rgba(0,0,0,0.2) 0px 3px 20px 2px",
-                      "transform": "scale(1.2)",
-                      "transition-duration": "0.5s"})
-      }).mouseout(function() {
-        $(this).css({"box-shadow": "rgba(0,0,0,0) 0px 0px 0px 0px",
-                     "transform": "scale(1)",
-                     "transition-duration": "0.5s"})
-      });
-      numberDay++;
+    this.daysInMonth = 32 - new Date(year, month - 1, 32).getDate();
+    this.firstDayOfMonth = new Date(year, month - 1, 0).getDay();
+    this.inputYear = year;
+    this.inputId = id;
+    this.defineHoverClass = (this.firstDayOfMonth == 0)? "hoverClass" : "";
+    this.numberDay = 0;
+  }
+
+  numbering(day): any {
+    if (this.days[day] >= this.firstDayOfMonth && this.numberDay < this.daysInMonth) {
+      this.numberDay++;
+      console.log(1);
+      this.defineHoverClass = "hoverClass";
+      return this.numberDay;
+    } else {
+      this.defineHoverClass = "";
+      console.log(0);
     }
   }
 
-  openModal(){
+  openModal(i){
     this.display = "block";
+    this.dayModal = i;
   }
 
   closeModal(){

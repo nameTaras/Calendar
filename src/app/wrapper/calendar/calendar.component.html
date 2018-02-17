@@ -1,70 +1,23 @@
- <div *ngIf="toggleCalendarTransferred" class="calendar">
-   <div class="year">{{inputYear}}</div>
-   <table>
-     <tr>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
-        <th>Saturday</th>
-        <th>Sunday</th>
-      </tr>
-     <tr>
-        <td id="0" (click)='openModal()'></td>
-        <td id="1" (click)='openModal()'></td>
-        <td id="2" (click)='openModal()'></td>
-        <td id="3" (click)='openModal()'></td>
-        <td id="4" (click)='openModal()'></td>
-        <td id="5" (click)='openModal()'></td>
-        <td id="6" (click)='openModal()'></td>
-      </tr>
-     <tr>
-        <td id="7" (click)='openModal()'></td>
-        <td id="8" (click)='openModal()'></td>
-        <td id="9" (click)='openModal()'></td>
-        <td id="10" (click)='openModal()'></td>
-        <td id="11" (click)='openModal()'></td>
-        <td id="12" (click)='openModal()'></td>
-        <td id="13" (click)='openModal()'></td>
-      </tr>
-     <tr>
-        <td id="14" (click)='openModal()'></td>
-        <td id="15" (click)='openModal()'></td>
-        <td id="16" (click)='openModal()'></td>
-        <td id="17" (click)='openModal()'></td>
-        <td id="18" (click)='openModal()'></td>
-        <td id="19" (click)='openModal()'></td>
-        <td id="20" (click)='openModal()'></td>
-      </tr>
-     <tr>
-        <td id="21" (click)='openModal()'></td>
-        <td id="22" (click)='openModal()'></td>
-        <td id="23" (click)='openModal()'></td>
-        <td id="24" (click)='openModal()'></td>
-        <td id="25" (click)='openModal()'></td>
-        <td id="26" (click)='openModal()'></td>
-        <td id="27" (click)='openModal()'></td>
-      </tr>
-     <tr>
-        <td id="28" (click)='openModal()'></td>
-        <td id="29" (click)='openModal()'></td>
-        <td id="30" (click)='openModal()'></td>
-        <td id="31" (click)='openModal()'></td>
-        <td id="32" (click)='openModal()'></td>
-        <td id="33" (click)='openModal()'></td>
-        <td id="34" (click)='openModal()'></td>
-      </tr>
-     <tr>
-        <td id="35" (click)='openModal()'></td>
-        <td id="36" (click)='openModal()'></td>
-        <td id="37" (click)='openModal()'></td>
-        <td id="38" (click)='openModal()'></td>
-        <td id="39" (click)='openModal()'></td>
-        <td id="40" (click)='openModal()'></td>
-        <td id="41" (click)='openModal()'></td>
-      </tr>
-   </table>
+ <div *ngIf="toggleCalendar" class="calendar">
+   <div class="daysOfWeek">
+     <div class="year">{{inputYear}}</div>
+     <table>
+       <tr>
+         <th>Monday</th>
+         <th>Tuesday</th>
+         <th>Wednesday</th>
+         <th>Thursday</th>
+         <th>Friday</th>
+         <th>Saturday</th>
+         <th>Sunday</th>
+       </tr>
+     </table>
+   </div>
+   <div [class]="'id' + ' ' + inputId">
+     <div [class]="'blocksOfDays' + ' ' + defineHoverClass" *ngFor="let day of days" (click)="openModal(day)">
+       <p class="day" [innerHtml]="numbering(day)"></p>
+     </div>
+   </div>
  </div>
 
  <div class="backdrop" [ngStyle]="{'display':display}"></div>
@@ -72,10 +25,11 @@
    <div class="modal-dialog" role="document">
      <div class="modal-content">
        <div class="modal-body">
-         <p class="dayAndMonth">{{dayModal}}{{monthModal}}</p>
-         <button type="button" class="close" aria-label="Close" (click)="closeModal()"><span aria-hidden="true">&times;</span></button>
+         <p class="dayAndMonth">{{dayModal}} {{monthModal}}</p>
+         <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+           <span aria-hidden="true">&times;</span>
+         </button>
        </div>
      </div>
    </div>
  </div>
-
