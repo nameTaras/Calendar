@@ -13,9 +13,9 @@
        </tr>
      </table>
    </div>
-   <div [class]="'id' + ' ' + inputId">
-     <div [class]="'blocksOfDays' + ' ' + defineHoverClass" *ngFor="let day of days" (click)="openModal(day)">
-       <p class="day" [innerHtml]="numbering(day)"></p>
+   <div [class]="'id'" [id]="inputId">
+     <div class="blocksOfDays" [ngClass]="{'hoverClass': defineHoverClass}" *ngFor="let day of days" (click)="openModal(dayItem)">
+       <p #dayItem class="day">{{counter(day)}}</p>
      </div>
    </div>
  </div>
@@ -25,7 +25,7 @@
    <div class="modal-dialog" role="document">
      <div class="modal-content">
        <div class="modal-body">
-         <p class="dayAndMonth">{{dayModal}} {{monthModal}}</p>
+         <p class="dayAndMonth">{{dayModal}} {{monthModal || 'Select month'}}</p>
          <button type="button" class="close" aria-label="Close" (click)="closeModal()">
            <span aria-hidden="true">&times;</span>
          </button>

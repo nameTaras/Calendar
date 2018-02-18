@@ -1,26 +1,22 @@
 import {Injectable}  from "@angular/core";
 import {Subject} from "rxjs/Subject";
+import {ICalendar} from "../interfaces/ICalendar";
+
 
 @Injectable()
 export class CommunicationService {
 
-  subject = new Subject<any>();
-  subject2 = new Subject<any>();
+  toggleCalendar = new Subject<any>();
+  dataCreateCalendar = new Subject<any>();
 
-  constructor() {
-
-  }
+  constructor() {}
 
   toggle(bool: boolean) {
-    this.subject.next(bool);
+    this.toggleCalendar.next(bool);
   }
 
-  create(id, year, month){
-    this.subject2.next({
-      id: id,
-      year: year,
-      month: month
-    });
+  create(value: ICalendar){
+    this.dataCreateCalendar.next(value);
   }
 
 }

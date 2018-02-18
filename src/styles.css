@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat/Montserrat-Light.ttf')
+}
 body {
   margin: 0;
+}
+
+h, th {
+  font-family: Montserrat;
 }
