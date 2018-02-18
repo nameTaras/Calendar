@@ -9,11 +9,9 @@
   flex-direction: row;
   position: relative;
 }
-
 .chooseAMonthForm {
   margin: auto;
 }
-
 input {
   border: none;
   border-bottom: 1px solid gray;
@@ -23,7 +21,9 @@ input {
   font-size: 17px;
   width: 150px;
 }
-
+input:focus {
+  outline: none;
+}
 button {
   border: none;
   border-radius: 20px;
@@ -33,12 +33,6 @@ button {
   font-size: 17px;
   background: rgb(63, 186, 206);
   color: white;
-}
-
-
-
-input:focus {
-  outline: none;
 }
 button:focus {
   outline: none;

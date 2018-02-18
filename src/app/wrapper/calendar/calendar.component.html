@@ -1,35 +1,40 @@
- <div *ngIf="toggleCalendar" class="calendar">
-   <div class="daysOfWeek">
-     <div class="year">{{inputYear}}</div>
-     <table>
-       <tr>
-         <th>Monday</th>
-         <th>Tuesday</th>
-         <th>Wednesday</th>
-         <th>Thursday</th>
-         <th>Friday</th>
-         <th>Saturday</th>
-         <th>Sunday</th>
-       </tr>
-     </table>
-   </div>
-   <div [class]="'id'" [id]="inputId">
-     <div class="blocksOfDays" [ngClass]="{'hoverClass': defineHoverClass}" *ngFor="let day of days" (click)="openModal(dayItem)">
-       <p #dayItem class="day">{{counter(day)}}</p>
-     </div>
-   </div>
- </div>
+<div *ngIf="toggleCalendar" class="wrapCalendar">
+  <div class="daysOfWeek">
+    <div class="year">{{inputYear}}</div>
+    <table>
+      <tr>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+        <th>Sunday</th>
+      </tr>
+    </table>
+  </div>
+  <!-- Build days of month -->
+  <div [class]="'calendar'" [id]="inputId">
+    <div class="weeks" *ngFor="let week of weeks">
+      <div class="daysInWeek" [ngClass]="{'hoverClass': defineHoverClass}" *ngFor="let daysOfWeek of days"
+           (click)="openModal(dayItem)">
+        <p #dayItem class="day">{{counter(daysOfWeek, week, dayItem )}}</p>
+      </div>
+    </div>
+  </div>
+</div>
 
- <div class="backdrop" [ngStyle]="{'display':display}"></div>
- <div class="modal" role="dialog"  [ngStyle]="{'display':display}">
-   <div class="modal-dialog" role="document">
-     <div class="modal-content">
-       <div class="modal-body">
-         <p class="dayAndMonth">{{dayModal}} {{monthModal || 'Select month'}}</p>
-         <button type="button" class="close" aria-label="Close" (click)="closeModal()">
-           <span aria-hidden="true">&times;</span>
-         </button>
-       </div>
-     </div>
-   </div>
- </div>
+<!-- Modal window  with choosed day and month-->
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" role="dialog" [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p class="dayAndMonth">{{choosedDay}} {{inputMonth || 'Select month'}}</p>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

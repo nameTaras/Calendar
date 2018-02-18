@@ -10,13 +10,14 @@ import moment = require("moment");
 })
 export class CalendarComponent implements OnInit {
 
+  public weeks: Array<number> = [];
   public days: Array<number> = [];
   public toggleCalendar = false;
   public inputYear: number;
   public inputId: any;
   public display: string = 'none';
-  public monthModal: string;
-  public dayModal: number;
+  public inputMonth: string;
+  public choosedDay: number;
   public daysInMonth: number;
   public firstDayOfMonth: number;
   public numberDay = 0;
@@ -31,18 +32,23 @@ export class CalendarComponent implements OnInit {
     this.communicationService.toggleCalendar.subscribe( (bool) => {
       this.toggleCalendar = bool;
     });
-    for(let i = 0; i <= 41; i++) {
+    for(let i = 0; i < 6; i++) {
+      this.weeks.push(i);
+    }
+    for(let i = 0; i < 7; i++) {
       this.days.push(i);
     }
   }
 
   createCalendar(calendarInitData: ICalendar) {
+    //Finding month name
     if (calendarInitData.month) {
       const monthToString: string = calendarInitData.year.toString() + calendarInitData.month.toString();
-      this.monthModal = moment(monthToString, "YYYYMM").format('MMMM');
+      this.inputMonth = moment(monthToString, "YYYYMM").format('MMMM');
     }
-
+    // Getting how much days in month
     this.daysInMonth = 32 - new Date(calendarInitData.year, calendarInitData.month - 1, 32).getDate();
+    // Finding which first day of week has got month
     this.firstDayOfMonth = new Date(calendarInitData.year, calendarInitData.month - 1, 0).getDay();
     this.inputYear = calendarInitData.year;
     this.inputId = calendarInitData.id;
@@ -50,28 +56,29 @@ export class CalendarComponent implements OnInit {
     this.numberDay = 0;
   }
 
-  counter(day) {
-    if (day >= this.firstDayOfMonth && this.numberDay < this.daysInMonth) {
+  // Numbering days of month
+  counter(day, week) {
+    if (day + (7 * week) >= this.firstDayOfMonth && this.numberDay < this.daysInMonth) {
       this.numberDay++;
-      this.defineHoverClass = true;
+      (this.numberDay === this.daysInMonth) && (this.defineHoverClass = false);
       return this.numberDay;
     } else {
-      this.defineHoverClass = false;
+      (week === 0) && ((day === this.firstDayOfMonth - 1) && (this.defineHoverClass = true));
     }
   }
 
-  openModal(i){
+  // Opening modal window
+  openModal(numberOfDay){
     this.display = "block";
-    this.dayModal =  i.innerText;
+    this.choosedDay =  numberOfDay.innerText;
     this.createCalendar(this.calendarObject);
   }
 
+  // closing modal window
   closeModal(){
     this.display = "none";
     this.createCalendar(this.calendarObject);
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

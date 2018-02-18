@@ -13,6 +13,7 @@ export class InputDataComponent implements OnInit {
 
   constructor(private communicationService: CommunicationService) {}
 
+  //Transfer data to calendar component
   createCalendar(value: ICalendar): void {
     this.communicationService.toggle(this.toggleCalendar);
     this.communicationService.create(value);

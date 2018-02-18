@@ -1,4 +1,4 @@
-.calendar {
+.wrapCalendar {
   margin: 20px 10%;
   height: 540px;
   background-color: white;
@@ -7,6 +7,8 @@
               #80808040 0 15px 20px 1px;
 }
 
+
+/*Input and days of week*/
 .daysOfWeek {
   display: flex;
   flex-direction: column;
@@ -26,20 +28,29 @@ th {
   font-size: 20px;
 }
 
-
-.id {
+/*Days of month*/
+.calendar {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
-.blocksOfDays {
-  margin: 7px 0 0 14px;
+.weeks   {
+  margin: 7px 0 0 0;
   height: 70px;
-  width: 140px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.daysInWeek {
+  border-radius: 15px;
+  height: 70px;
+  width: 130px;
   display: flex;
 }
 .day {
   margin: auto;
+}
+.hoverClass {
+  cursor: pointer;
 }
 .hoverClass:hover {
    box-shadow: rgba(0,0,0,0.2) 0 3px 20px 2px;
@@ -47,14 +58,14 @@ th {
    transition-duration: 0.5s;
  }
 
-                                          /*Modal window*/
+/*Modal window*/
 .backdrop{
   background-color:rgba(0,0,0,0.6);
   position:fixed;
   top:0;
   left:0;
   width:100%;
-  height:100vh;
+  height:100%;
 }
 .modal-body {
   height: 100px;

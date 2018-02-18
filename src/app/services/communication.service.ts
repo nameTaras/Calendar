@@ -15,8 +15,8 @@ export class CommunicationService {
     this.toggleCalendar.next(bool);
   }
 
+  //Data from input
   create(value: ICalendar){
     this.dataCreateCalendar.next(value);
   }
-
 }

@@ -3,6 +3,6 @@
     <input type="text" #id class="chooseId" placeholder="id">
     <input type="text" #year class="chooseYear" placeholder="year">
     <input type="text" #month class="chooseMonth" placeholder="month">
-    <button (click)="createCalendar(id.value, year.value, month.value)">Create</button>
+    <button (click)="createCalendar({id: id.value, year: year.value, month: month.value})">Create</button>
   </div>
 </div>
